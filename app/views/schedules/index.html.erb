@@ -1,0 +1,41 @@
+<%= render "shared/header" %>
+
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+
+<div class="title-container">
+    <h2 class="title-text">予定一覧</h2>
+    <%= button_to "新規追加", {controller: 'schedules',action: 'new'}, {method: :get} %>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>開始日</th>
+            <th>終了日</th>
+            <th>終日</th>
+            <th>更新日時</th>
+            <th>参照</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @schedules.each do |schedule| %>
+            <tr>
+                <td><%= schedule.id %></td>
+                <td><%= schedule.title %></td>
+                <td><%= schedule.start_day.to_s(:date_jp) %></td>
+                <td><%= schedule.end_day.to_s(:date_jp) %></td>
+                <td><%= schedule.all_day %></td>
+                <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
+                <td>
+                    <%= link_to "参照", schedule %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
