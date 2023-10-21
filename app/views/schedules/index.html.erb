@@ -19,7 +19,7 @@
             <th>終了日</th>
             <th>終日</th>
             <th>更新日時</th>
-            <th>参照</th>
+            <th>詳細</th>
             <th>編集</th>
             <th>削除</th>
         </tr>
@@ -35,7 +35,7 @@
                 <td><%= schedule.all_day %></td>
                 <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
                 <td>
-                    <%= link_to "参照", schedule %>
+                    <%= link_to "詳細", schedule %>
                 </td>
                 <td>
                     <%= link_to "編集", [:edit, schedule] %>
