@@ -32,7 +32,7 @@
                 <td><%= schedule.title %></td>
                 <td><%= schedule.start_day.to_s(:date_jp) %></td>
                 <td><%= schedule.end_day.to_s(:date_jp) %></td>
-                <td><%= schedule.all_day %></td>
+                <td><%= schedule.all_day ? '⚪︎' : '' %></td>
                 <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
                 <td>
                     <%= link_to "詳細", schedule %>
