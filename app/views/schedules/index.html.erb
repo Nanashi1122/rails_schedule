@@ -52,4 +52,13 @@
     <h2 class="sum-schedule">予定件数</h2>
     <h2><%= Schedule.count %></h2>
     <h3 class="date-today">今日の日付</h3>
+    <div id="current_date">
+        <script>
+            date = new Date();
+            year = date.getFullYear();
+            month = date.getMonth() + 1;
+            day = date.getDate();
+            document.getElementById("current_date").innerHTML = year + "/" + month + "/" + day;
+        </script>
+    </div>
 </div>
