@@ -2,6 +2,10 @@
 
  <h3>スケジュール新規作成</h3>
  
+<% if flash[:notice_N] %>
+    <p class="notice"><%= flash[:notice_N] %></p>
+<% end %>
+
  <%= render "shared/error", obj: @schedule %>
  
  <%= form_with model: @schedule do |f| %>
