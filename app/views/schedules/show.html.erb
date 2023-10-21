@@ -7,17 +7,25 @@
         <th>タイトル</th>
         <td><%= @schedule.title %></td>
     </tr>
+
     <tr>
         <th>開始日</th>
         <td><%= @schedule.start_day %></td>
     </tr>
+
     <tr>
         <th>終了日</th>
         <td><%= @schedule.end_day %></td>
     </tr>
+
     <tr>
         <th>終日</th>
         <td><%= @schedule.all_day ? '⚪︎' : '' %></td>
+    </tr>
+
+    <tr>
+        <th>メモ</th>
+        <td><%= @schedule.memo %></td>
     </tr>
 </table>
 
