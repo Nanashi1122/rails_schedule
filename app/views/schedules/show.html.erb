@@ -1,6 +1,8 @@
 <%= render "shared/header" %>
 
-<h3>スケジュール詳細</h3>
+<div class="title-container">
+    <h3>スケジュール詳細</h3>
+</div>
 
 <table>
     <tr>
@@ -29,8 +31,9 @@
     </tr>
 </table>
 
-<div>
+<div class="show-bottom">
     <ul>
+        <li><%= button_to "編集", {controller: 'schedules',action: 'edit'}, {method: :get} %></li>
         <li><%= link_to "スケジュール一覧に戻る", :schedules %></li>
     </ul>
 </div>

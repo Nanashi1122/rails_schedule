@@ -4,61 +4,68 @@
     <p class="notice"><%= flash[:notice] %></p>
 <% end %>
 
+<body>
+    <div class="app-contents">
+        <div class="title-container">
+            <h2 class="title-text">予定一覧</h2>
+            <%= button_to "新規追加", {controller: 'schedules',action: 'new'}, {method: :get} %>
+        </div>
 
-<div class="title-container">
-    <h2 class="title-text">予定一覧</h2>
-    <%= button_to "新規追加", {controller: 'schedules',action: 'new'}, {method: :get} %>
-</div>
+        <div class="date-today">
+            <h3>今日の日付</h3>
+            <div id="current_date">
+                <script>
+                    date = new Date();
+                    year = date.getFullYear();
+                    month = date.getMonth() + 1;
+                    day = date.getDate();
+                    document.getElementById("current_date").innerHTML = year + "/" + month + "/" + day;
+                </script>
+            </div>
+        </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>タイトル</th>
-            <th>開始日</th>
-            <th>終了日</th>
-            <th>終日</th>
-            <th>更新日時</th>
-            <th>詳細</th>
-            <th>編集</th>
-            <th>削除</th>
-        </tr>
-    </thead>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>タイトル</th>
+                    <th>開始日</th>
+                    <th>終了日</th>
+                    <th>終日</th>
+                    <th>更新日時</th>
+                    <th>詳細</th>
+                    <th>編集</th>
+                    <th>削除</th>
+                </tr>
+            </thead>
 
-    <tbody>
-        <% @schedules.each do |schedule| %>
-            <tr>
-                <td><%= schedule.id %></td>
-                <td><%= schedule.title %></td>
-                <td><%= schedule.start_day.to_s(:date_jp) %></td>
-                <td><%= schedule.end_day.to_s(:date_jp) %></td>
-                <td><%= schedule.all_day ? '⚪︎' : '' %></td>
-                <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
-                <td>
-                    <%= link_to "詳細", schedule %>
-                </td>
-                <td>
-                    <%= link_to "編集", [:edit, schedule] %>
-                </td>
-                <td>
-                    <%= link_to "削除", schedule, method: :delete, data: { confirm: "本当に削除しますか？" } %>
-                </td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+            <tbody>
+                <% @schedules.each do |schedule| %>
+                    <tr>
+                        <td><%= schedule.id %></td>
+                        <td><%= schedule.title %></td>
+                        <td><%= schedule.start_day.to_s(:date_jp) %></td>
+                        <td><%= schedule.end_day.to_s(:date_jp) %></td>
+                        <td><%= schedule.all_day ? '⚪︎' : '' %></td>
+                        <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
+                        <td>
+                            <%= link_to "詳細", schedule %>
+                        </td>
+                        <td>
+                            <%= link_to "編集", [:edit, schedule] %>
+                        </td>
+                        <td>
+                            <%= link_to "削除", schedule, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
 
-<div class="footer-container">
-    <h2 class="sum-schedule">予定件数</h2>
-    <h2><%= Schedule.count %></h2>
-    <h3 class="date-today">今日の日付</h3>
-    <div id="current_date">
-        <script>
-            date = new Date();
-            year = date.getFullYear();
-            month = date.getMonth() + 1;
-            day = date.getDate();
-            document.getElementById("current_date").innerHTML = year + "/" + month + "/" + day;
-        </script>
+        <div class="footer-container">
+            <div>
+                <h2>予定件数 <span><%= Schedule.count %></span> 件</h2>
+            </div>
+        </div>
     </div>
-</div>
+</body>

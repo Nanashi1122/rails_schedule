@@ -1,18 +1,22 @@
 <%= render "shared/header" %>
 
- <h3>スケジュール新規作成</h3>
+
  
 <% if flash[:notice_N] %>
     <p class="notice"><%= flash[:notice_N] %></p>
 <% end %>
 
  <%= render "shared/error", obj: @schedule %>
+
+<div class="title-container">
+  <h3>スケジュール新規作成</h3>
+</div>
  
  <%= form_with model: @schedule do |f| %>
    <table>
      <tr>
        <th><%= f.label :title, "タイトル" %></th>
-       <td><%= f.text_field :title %></td>
+       <td><%= f.text_field :title, :size=>"30" %></td>
      </tr>
  
      <tr>
@@ -27,12 +31,12 @@
  
      <tr>
        <th><%= f.label :all_day, "終日" %></th>
-       <td><%= f.check_box :all_day %></td>
+       <td><%= f.check_box :all_day %>終日の場合はチェック</td>
      </tr>
 
      <tr>
         <th><%= f.label :memo, "メモ" %>
-        <td><%= f.text_area :memo %>
+        <td><%= f.text_area :memo, :size=>"50" %>
      </tr>
    </table>
  
